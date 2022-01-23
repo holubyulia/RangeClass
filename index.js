@@ -13,13 +13,14 @@ to
 */
 
 class RangeValidator{
-    constructor (diapazonStart,diapazonEnd) {
-        this.diapazonStart = diapazonStart;
-        this.diapazonEnd = diapazonEnd;
+
+    constructor (diapazonStart, diapazonEnd) {
+        this._diapazonStart = diapazonStart;
+        this._diapazonEnd = diapazonEnd;
     }
 
     set diapazonStart (value) {
-        if (typeof value !== number){
+        if (typeof value !== 'number'){
             throw new TypeError('Parameters has unnappropriate type')
         }
 
@@ -31,10 +32,10 @@ class RangeValidator{
     }
 
     set diapazonEnd (value) {
-        if (typeof value !== number){
+        if (typeof value !== 'number'){
             throw new TypeError('Parameters has unnappropriate type')
         }
-        if (diapazonStart > value) {
+        if (this._diapazonStart > value) {
             throw new RangeError('We can`t generate array when last value lower then start')
         }
         this._diapazonEnd = value;
@@ -44,22 +45,21 @@ class RangeValidator{
         return this._diapazonEnd;
     }
 
-    get range(diapazonStart, _diapazonEnd){
+    get Range (){
         let rangearray = [];
-        rangearray.forEach( rangearray => {
-            for (let i = diapazonStart; i <= diapazonEnd; i++){
-                return rangearray[i]++;
+            for (let i = this._diapazonStart - 1; i <= this._diapazonEnd - 1; i++){               
+                rangearray[i] = i + 1;
             }
             return rangearray;
-        })
+        }
 
-    }
-
-    getValidate (value){
-        if(range.instanceof(value) !== -1){
+    validate (value) {
+        if(Range.instanceof(value) !== -1){
             throw new RangeError('This number is not part of array')
         }
         return 'This number is part of array'
     }
 
-}
+} 
+
+const u1 = new RangeValidator(1,8)
