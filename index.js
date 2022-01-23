@@ -15,8 +15,8 @@ to
 class RangeValidator{
 
     constructor (diapazonStart, diapazonEnd) {
-        this._diapazonStart = diapazonStart;
-        this._diapazonEnd = diapazonEnd;
+        this.diapazonStart = diapazonStart;
+        this.diapazonEnd = diapazonEnd;
     }
 
     set diapazonStart (value) {
@@ -47,7 +47,7 @@ class RangeValidator{
 
     get Range (){
         let rangearray = [];
-            for (let i = this._diapazonStart - 1; i <= this._diapazonEnd - 1; i++){               
+            for (let i = this.diapazonStart - 1; i <= this.diapazonEnd - 1; i++){               
                 rangearray[i] = i + 1;
             }
             return rangearray;
